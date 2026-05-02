@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMe Clone - TimeCapsule</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toast notifications container -->
+    <div id="toast-container"></div>
+    
+    <header>
+        <div class="header-content">
+            <h1><i class="fa-solid fa-paper-plane"></i> TimeCapsule</h1>
+            <!-- Dark mode toggle -->
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Message composing area -->
+        <section class="compose-section">
+            <h2>Write to the future</h2>
+            <p class="subtitle">Write a message to your future self. We'll keep it safe until the time is right.</p>
+            
+            <form id="capsule-form">
+                <div class="input-group">
+                    <label for="email">Your Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Dear Future Me..." required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="delivery-date">Deliver on</label>
+                    <input type="date" id="delivery-date" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-lock"></i> Seal Capsule
+                </button>
+            </form>
+        </section>
+
+        <!-- Saved messages list -->
+        <section class="messages-section">
+            <h2>Your Time Capsules</h2>
+            
+            <!-- Empty state (shown when no messages exist) -->
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fa-solid fa-box-open empty-icon"></i>
+                <p>You haven't written any letters to the future yet.</p>
+            </div>
+            
+            <!-- Messages container -->
+            <div id="messages-list" class="messages-list">
+                <!-- Messages will be injected here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for viewing full message when unlocked -->
+    <div id="message-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Your Message</h3>
+                <span id="modal-date" class="date-badge"></span>
+            </div>
+            <div class="modal-body">
+                <p id="modal-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Overlay -->
+    <div id="animation-overlay" class="animation-overlay hidden">
+        <div class="glass-capsule">
+            <div class="capsule-top">
+                <div class="capsule-shine"></div>
+            </div>
+            <div class="capsule-bottom">
+                <div class="capsule-content"></div>
+                <div class="capsule-shine"></div>
+            </div>
+        </div>
+        <p class="animation-message">Your Time Capsule is sealed</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
